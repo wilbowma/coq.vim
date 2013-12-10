@@ -42,7 +42,7 @@ syn cluster coqVernac contains=coqRequire,coqCheck,coqEval,coqNotation,coqTacNot
 syn match   coqError             "\S\+"
 syn match   coqVernacPunctuation ":=\|\.\|:"
 syn match   coqIdent             contained "[_[:alpha:]][_'[:alnum:]]*"
-syn keyword coqTopLevel          Declare Module Type Canonical Structure Cd Coercion Derive Drop Existential
+syn keyword coqTopLevel          Declare Type Canonical Structure Cd Coercion Derive Drop Existential
 "...
 syn keyword coqVernacCmd         Functional Scheme Back Combined
 syn keyword coqFeedback          Show About Print
@@ -65,6 +65,9 @@ syn region coqRequire matchgroup=coqVernacCmd start="\<Export\>" matchgroup=coqV
 syn region coqCheck   contains=@coqTerm matchgroup=coqVernacCmd start="\<Check\>" matchgroup=coqVernacPunctuation end="\.\_s"
 syn region coqOpaque  matchgroup=coqVernacCmd start="\<\%(Opaque\|Transparent\)\>" matchgroup=coqVernacPunctuation end="\.\_s"
 syn region coqShow       matchgroup=coqVernacCmd start="\<Show\_s\+\%(\%(Implicits\|Script\|Tree\|Proof\|Conjectures\|Intros\?\|Existentials\)\>\)\?" end="\.\_s"
+
+" Modules
+syn region coqModule contains=coqSet,coqModule,coqSection,@coqVernac matchgroup=coqTopLevel start="\<Module\_s*\z(\S\+\)\_s*\.\_s" end="\<End\_s\+\z1\_s*\.\_s"
 
 " Sections
 syn region coqSection contains=coqSection,@coqVernac matchgroup=coqVernacCmd start="\<Section\_s*\z(\S\+\)\_s*\.\_s" end="\<End\_s\+\z1\_s*\.\_s"

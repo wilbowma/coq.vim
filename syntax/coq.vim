@@ -250,9 +250,10 @@ syn region coqDefContents1  contained contains=@coqTerm matchgroup=coqVernacPunc
 
 " Instance
 syn region coqInst          contains=coqInstName matchgroup=coqVernacCmd start="\<\%(Program\_s\+\)\?\%(Instance\|\)\>" matchgroup=coqVernacPunctuation end="\.$" end="\.\_s" keepend skipnl skipwhite skipempty
-syn region coqInstName       contained contains=coqInstType,coqDefContents1 matchgroup=coqIdent start="[_[:alpha:]][_'[:alnum:]]*" matchgroup=coqVernacPunctuation end="\.$"  end="\.\_s" 
+syn region coqInstName       contained contains=coqInstType,coqDefContents1,coqInstFields matchgroup=coqIdent start="[_[:alpha:]][_'[:alnum:]]*" matchgroup=coqVernacPunctuation end="\.$"  end="\.\_s" 
 syn region coqInstType       contained contains=@coqTerm matchgroup=coqVernacPunctuation start=":" matchgroup=coqVernacPunctuation end="\.$" end="\.\_s" end=":="
-
+syn region coqInstFields     contained contains=coqInstField matchgroup=coqVernacPunctuation start="{" end="}" keepend
+syn region coqInstField      contained contains=@coqTerm matchgroup=coqVernacPunctuation start=":=" matchgroup=coqVernacPunctuation end=";" end="}"
 "
 
 " Fixpoints
